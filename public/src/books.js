@@ -1,3 +1,7 @@
+
+
+const {isCheckedOut} = require("./home")
+
 function findAuthorById(authors, id) {
   let matchingAuthor = {};
   authors.forEach((author) => {
@@ -29,14 +33,20 @@ function partitionBooksByBorrowedStatus(books) {
   const isReturned = [];
 
   const booksBorrows = books.forEach((book) => {
-    if (book.borrows[0].returned === false) {
-      notReturned.push(book);
-    } else {
+    if (book.borrows[0].returned === true) {
       isReturned.push(book);
+    } 
+    else {
+      notReturned.push(book)
     }
   });
-
+  
   return [notReturned, isReturned];
+}
+
+
+let bookBorrowers = (book, accounts) => {
+
 }
 
 function getBorrowersForBook(book, accounts) {

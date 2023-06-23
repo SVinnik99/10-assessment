@@ -1,18 +1,5 @@
-function getTotalBooksCount(books) {
-  //Get total book count
-  const bookCount = books.length;
-  return bookCount;
-}
 
-function getTotalAccountsCount(accounts) {
-  //Get total number of accounts
-  const totalAccounts = accounts.length;
-  return totalAccounts;
-}
-
-function getBooksBorrowedCount(books) {
-  //Get the total number of books that have not been returned yet
-
+const isCheckedOut = (books) => {
   let counter = 0;
 
   books.forEach((book) => {
@@ -20,8 +7,34 @@ function getBooksBorrowedCount(books) {
       counter++;
     }
   });
+return counter 
+}
 
-  return counter;
+function getTotalBooksCount(books) {
+  //Get total book count
+  /*const bookCount = books.length;
+  return bookCount;*/
+
+  const counter = books.reduce((total,book) => {
+    total++ 
+     return total
+  } , 0)
+
+return counter
+
+}
+
+function getTotalAccountsCount(accounts) {
+  //Get total number of accounts
+  
+  
+  return accounts.length
+}
+
+function getBooksBorrowedCount(books) {
+ 
+return isCheckedOut(books)
+
 }
 
 function getMostCommonGenres(books) {
@@ -97,6 +110,7 @@ function getMostPopularAuthors(books, authors) {
 }
 
 module.exports = {
+  isCheckedOut,
   getTotalBooksCount,
   getTotalAccountsCount,
   getBooksBorrowedCount,
